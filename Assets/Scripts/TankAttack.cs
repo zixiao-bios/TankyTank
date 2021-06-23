@@ -11,7 +11,8 @@ public class TankAttack : MonoBehaviour
     // 导弹预制体
     public GameObject missile_prefab;
 
-    public int tankID;
+    [HideInInspector]
+    public int playerID;
 
     // 子弹冷却所需时间
     public float shell_ready_time_tot;
@@ -70,6 +71,8 @@ public class TankAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerID = this.GetComponent<TankMovement>().playerID;
+
         minLauchForce = aimSlider.minValue;
         maxLauchForce = aimSlider.maxValue;
         curLauchForce = minLauchForce;
@@ -81,7 +84,7 @@ public class TankAttack : MonoBehaviour
         shell_fire_pos = transform.Find("ShellFirePosition");
         missile_fire_pos = transform.Find("MissileFirePosition");
 
-        switch (tankID) {
+        switch (playerID) {
             case 1:
                 shell_key[0] = KeyCode.Space;
                 missile_key = KeyCode.Alpha1;
@@ -165,7 +168,7 @@ public class TankAttack : MonoBehaviour
                     GameObject missile = GameObject.Instantiate(missile_prefab, missile_fire_pos.position, missile_fire_pos.rotation);
 
                     // 设置导弹的tankID
-                    missile.SendMessage("SetTankID", tankID);
+                    missile.SendMessage("SetTankID", playerID);
 
                     // 设置导弹初始朝向
                     missile.transform.localEulerAngles = new Vector3(90, missile.transform.localEulerAngles[1], missile.transform.localEulerAngles[2]);

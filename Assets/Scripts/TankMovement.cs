@@ -6,7 +6,7 @@ public class TankMovement : MonoBehaviour
 {
     public float speed;
     public float angularSpeed;
-    public float tankID;
+    public int playerID;
     private Rigidbody tankRigidbody;
 
     // 冻结判断
@@ -58,10 +58,10 @@ public class TankMovement : MonoBehaviour
 
         if (!isFrozen)
         {
-            float v = Input.GetAxis("Player" + tankID + "Vertical");
+            float v = Input.GetAxis("Player" + playerID + "Vertical");
             tankRigidbody.velocity = transform.forward * v * speed;
 
-            float h = Input.GetAxis("Player" + tankID + "Horizontal");
+            float h = Input.GetAxis("Player" + playerID + "Horizontal");
             tankRigidbody.angularVelocity = transform.up * h * angularSpeed;
 
             if(v != 0 || h != 0)

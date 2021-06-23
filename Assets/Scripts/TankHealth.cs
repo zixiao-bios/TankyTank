@@ -22,7 +22,9 @@ public class TankHealth : MonoBehaviour
 
     private bool isDead = false;
 
-    private bool invincible = false;
+    // 坦克无敌
+    [HideInInspector]
+    public bool invincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,8 @@ public class TankHealth : MonoBehaviour
             {
                 // 坦克死亡
                 isDead = true;
-                GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
+                GameObject tankExp = GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
+                GameObject.Destroy(tankExp, 1);
                 gameObject.SendMessage("SetFreeze", true);
                 destroySmoke.Play();
                 foreach(GameObject tank in GameObject.FindGameObjectsWithTag("tank"))
