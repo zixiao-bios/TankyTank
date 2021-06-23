@@ -8,7 +8,7 @@ public class SputterDamage : MonoBehaviour
     public int sputterSpeed;
 
     // 用于记录被溅射到的实例ID，避免多次伤害
-    private List<int> instanceIDs;
+    private List<int> instanceIDs = new List<int>();
 
     // Start is called before the first frame update
     void Start()

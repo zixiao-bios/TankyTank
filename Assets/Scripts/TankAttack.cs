@@ -65,7 +65,7 @@ public class TankAttack : MonoBehaviour
     // 发射音效
     private AudioSource shootAudio;
 
-
+    private bool isFrozen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -97,71 +97,82 @@ public class TankAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 处理子弹冷却
-        if (!shell_ready) {
-            // 子弹正在冷却
-            shell_time_remain -= Time.deltaTime * 1000;
-            shell_ready_slider.value = shell_time_remain / shell_ready_time_tot;
-            if (shell_time_remain <= 0) {
-                shell_ready = true;
-                shell_ready_slider.value = 0;
-            }
-        }
-
-        // 处理导弹冷却
-        if (!missile_ready) {
-            // 导弹正在冷却
-            missile_time_remain -= Time.deltaTime * 1000;
-            missile_ready_slider.value = missile_time_remain / missile_ready_time_tot;
-            if (missile_time_remain <= 0) {
-                missile_ready = true;
-                missile_ready_slider.value = 0;
-            }
-        }
-
-        // 发射子弹
-        if (shell_ready) {
-            // 蓄力满自动发射
-            if (curLauchForce >= maxLauchForce) {
-                curLauchForce = maxLauchForce;
-                FireBullet();
-            }
-            // 按下发射键蓄力
-            else if (GetKeys(shell_key))
+        if (!isFrozen)
+        {
+            // 处理子弹冷却
+            if (!shell_ready)
             {
-                curLauchForce += Time.deltaTime * chargeSpeed;
-                // 连续发射导弹会导致音效短暂播放，效果不好，因此提前判断蓄力值再播放
-                if (curLauchForce >= minLauchForce + (maxLauchForce - minLauchForce) / 5)
+                // 子弹正在冷却
+                shell_time_remain -= Time.deltaTime * 1000;
+                shell_ready_slider.value = shell_time_remain / shell_ready_time_tot;
+                if (shell_time_remain <= 0)
                 {
-                    aimSlider.value = curLauchForce;
-                    if (!chargeAudio.isPlaying)
-                    {
-                        chargeAudio.Play();
-                    }
+                    shell_ready = true;
+                    shell_ready_slider.value = 0;
                 }
             }
-            // 释放发射键发射
-            else if (GetKeysUp(shell_key))
+
+            // 处理导弹冷却
+            if (!missile_ready)
             {
-                FireBullet();
+                // 导弹正在冷却
+                missile_time_remain -= Time.deltaTime * 1000;
+                missile_ready_slider.value = missile_time_remain / missile_ready_time_tot;
+                if (missile_time_remain <= 0)
+                {
+                    missile_ready = true;
+                    missile_ready_slider.value = 0;
+                }
             }
-        }
 
-        // 发射导弹
-        if (missile_ready) {
-            if (Input.GetKey(missile_key)) {
-                shootAudio.Play();
-                // 创建导弹
-                GameObject missile = GameObject.Instantiate(missile_prefab, missile_fire_pos.position, missile_fire_pos.rotation);
+            // 发射子弹
+            if (shell_ready)
+            {
+                // 蓄力满自动发射
+                if (curLauchForce >= maxLauchForce)
+                {
+                    curLauchForce = maxLauchForce;
+                    FireBullet();
+                }
+                // 按下发射键蓄力
+                else if (GetKeys(shell_key))
+                {
+                    curLauchForce += Time.deltaTime * chargeSpeed;
+                    // 连续发射导弹会导致音效短暂播放，效果不好，因此提前判断蓄力值再播放
+                    if (curLauchForce >= minLauchForce + (maxLauchForce - minLauchForce) / 5)
+                    {
+                        aimSlider.value = curLauchForce;
+                        if (!chargeAudio.isPlaying)
+                        {
+                            chargeAudio.Play();
+                        }
+                    }
+                }
+                // 释放发射键发射
+                else if (GetKeysUp(shell_key))
+                {
+                    FireBullet();
+                }
+            }
 
-                // 设置导弹的tankID
-                missile.SendMessage("SetTankID", tankID);
+            // 发射导弹
+            if (missile_ready)
+            {
+                if (Input.GetKey(missile_key))
+                {
+                    shootAudio.Play();
+                    // 创建导弹
+                    GameObject missile = GameObject.Instantiate(missile_prefab, missile_fire_pos.position, missile_fire_pos.rotation);
 
-                // 设置导弹初始朝向
-                missile.transform.localEulerAngles = new Vector3(90, missile.transform.localEulerAngles[1], missile.transform.localEulerAngles[2]);
+                    // 设置导弹的tankID
+                    missile.SendMessage("SetTankID", tankID);
 
-                missile_ready = false;
-                missile_time_remain = missile_ready_time_tot;
+                    // 设置导弹初始朝向
+                    missile.transform.localEulerAngles = new Vector3(90, missile.transform.localEulerAngles[1], missile.transform.localEulerAngles[2]);
+
+                    missile_ready = false;
+                    missile_time_remain = missile_ready_time_tot;
+                }
             }
         }
     }
@@ -203,5 +214,10 @@ public class TankAttack : MonoBehaviour
         // 发射结束，重置蓄力槽
         curLauchForce = minLauchForce;
         aimSlider.value = minLauchForce;
+    }
+
+    private void SetFreeze(bool flag)
+    {
+        isFrozen = flag;
     }
 }

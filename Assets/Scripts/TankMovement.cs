@@ -92,8 +92,8 @@ public class TankMovement : MonoBehaviour
         }
     }
 
-    public void Freeze()
+    public void SetFreeze(bool flag)
     {
-        isFrozen = true;
+        isFrozen = flag;
     }
 }

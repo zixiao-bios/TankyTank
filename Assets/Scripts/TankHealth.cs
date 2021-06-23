@@ -6,25 +6,29 @@ using UnityEngine.UI;
 public class TankHealth : MonoBehaviour
 {
     // 坦克爆炸动画
-    public GameObject tank_explosion;
+    public GameObject tankExplosion;
 
     // 坦克血量条
-    public Slider hp_slider;
+    public Slider hpSlider;
 
     // 爆炸后黑烟
     public ParticleSystem destroySmoke;
 
     // 坦克总血量
-    private int hp_tot = 100;
+    private int hpTotal = 100;
 
     // 坦克现在血量
     private int hp;
 
+    private bool isDead = false;
+
+    private bool invincible = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        hp = hp_tot;
-        hp_slider.value = 1;
+        hp = hpTotal;
+        hpSlider.value = 1;
     }
 
     // Update is called once per frame
@@ -35,15 +39,30 @@ public class TankHealth : MonoBehaviour
 
     // 坦克被攻击
     void Damage(int damage_value){
-        // 减血
-        hp -= damage_value;
-        hp_slider.value = (float)hp/hp_tot;
+        // 无敌检测
+        if (!invincible)
+        {
+            // 减血
+            hp -= damage_value;
+            hpSlider.value = (float)hp / hpTotal;
 
-        if(hp <= 0){
-            // 坦克死亡
-            GameObject.Instantiate(tank_explosion, transform.position + Vector3.up, transform.rotation);
-            gameObject.GetComponent<TankMovement>().Freeze();
-            destroySmoke.Play();
+            if (hp <= 0 && !isDead)
+            {
+                // 坦克死亡
+                isDead = true;
+                GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
+                gameObject.SendMessage("SetFreeze", true);
+                destroySmoke.Play();
+                foreach(GameObject tank in GameObject.FindGameObjectsWithTag("tank"))
+                {
+                    tank.SendMessage("SetInvincible", true);
+                }
+            }
         }
+    }
+
+    void SetInvincible(bool flag)
+    {
+        invincible = flag;
     }
 }
