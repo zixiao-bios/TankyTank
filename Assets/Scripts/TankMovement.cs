@@ -28,9 +28,17 @@ public class TankMovement : MonoBehaviour
     private AudioSource idleAudio;
     private AudioSource drivingAudio;
 
+    // 记录初始位置
+    private Vector3 initPosition;
+    private Vector3 initScale;
+    private Quaternion initRotation;
+
     // Start is called before the first frame update
     void Start()
     {
+        initPosition = gameObject.transform.position;
+        initScale = gameObject.transform.localScale;
+        initRotation = gameObject.transform.rotation;
         tankRigidbody = this.GetComponent<Rigidbody>();
 
         idleAudio = gameObject.GetComponents<AudioSource>()[0];
@@ -95,5 +103,13 @@ public class TankMovement : MonoBehaviour
     public void SetFreeze(bool flag)
     {
         isFrozen = flag;
+    }
+
+    public void Respawn()
+    {
+        gameObject.transform.position = initPosition;
+        gameObject.transform.rotation = initRotation;
+        gameObject.transform.localScale = initScale;
+        SetFreeze(false);
     }
 }

@@ -20,7 +20,7 @@ public class Shell : MonoBehaviour
 
     public void OnCollisionEnter(Collision coll){
         GameObject exp = GameObject.Instantiate(shellExplosion, transform.position, transform.rotation);
-        GameObject.Destroy(exp, 1);
+        GameObject.Destroy(exp, 0.4f);
         GameObject.Destroy(this.gameObject);
 
         if(coll.gameObject.tag == "tank"){

@@ -794,12 +794,20 @@ PrefabInstance:
       propertyPath: hp_slider
       value: 
       objectReference: {fileID: 208225265}
+    - target: {fileID: 3265878021748189425, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1349682413}
     - target: {fileID: 3265878021748189428, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: m_Name
       value: Tank2
       objectReference: {fileID: 0}
     - target: {fileID: 3265878021748189429, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: tankID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265878021748189429, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+      propertyPath: playerID
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3265878021748189430, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
@@ -1116,7 +1124,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1127,8 +1135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<color=#00ffffff>\u80DC\u5229</color>\n<color=#00ffffff>\u5F53\u524D\u6BD4\u5206\uFF1A1
-    - 0</color>"
+  m_Text: 
 --- !u!222 &567828577
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2021,6 +2028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349682415}
   - component: {fileID: 1349682414}
+  - component: {fileID: 1349682416}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2138,6 +2146,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1349682416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349682413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64bba4fb20309b49a940c51e74c745b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryText: {fileID: 567828576}
+  gameSetTimeGap: 2
+  respawnList:
+  - {fileID: 1871481711}
+  - {fileID: 1852987237}
 --- !u!1 &1466464735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,6 +2878,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1852987237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265878021748189428, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+  m_PrefabInstance: {fileID: 414758450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1871481711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265878021748189428, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+  m_PrefabInstance: {fileID: 2076900860628381080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1881828358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1036235563945473845, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2445435104888917880, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3481,12 +3520,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 727910977}
     - target: {fileID: 3265878021748189425, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
-      propertyPath: tankExplosion
+      propertyPath: gameController
       value: 
-      objectReference: {fileID: 151086, guid: ee49a9a8678ecf8468eb488e1ac8d42b, type: 3}
+      objectReference: {fileID: 1349682413}
     - target: {fileID: 3265878021748189428, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: m_Name
       value: Tank1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265878021748189429, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
+      propertyPath: playerID
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3265878021748189430, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: aimSlider
@@ -3527,10 +3570,6 @@ PrefabInstance:
     - target: {fileID: 4296329795622540077, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5234749632148853648, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
-      propertyPath: m_Value
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5699323616839924147, guid: c095175cb1cadf14392cfc39bfe5500b, type: 3}
       propertyPath: m_Name

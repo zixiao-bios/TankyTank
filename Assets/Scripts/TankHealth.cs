@@ -14,6 +14,9 @@ public class TankHealth : MonoBehaviour
     // 爆炸后黑烟
     public ParticleSystem destroySmoke;
 
+    // 游戏总体控制对象
+    public GameObject gameController;
+
     // 坦克总血量
     private int hpTotal = 100;
 
@@ -40,7 +43,7 @@ public class TankHealth : MonoBehaviour
     }
 
     // 坦克被攻击
-    void Damage(int damage_value){
+    public void Damage(int damage_value){
         // 无敌检测
         if (!invincible)
         {
@@ -53,19 +56,30 @@ public class TankHealth : MonoBehaviour
                 // 坦克死亡
                 isDead = true;
                 GameObject tankExp = GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
-                GameObject.Destroy(tankExp, 1);
+                GameObject.Destroy(tankExp, 0.5f);
                 gameObject.SendMessage("SetFreeze", true);
                 destroySmoke.Play();
                 foreach(GameObject tank in GameObject.FindGameObjectsWithTag("tank"))
                 {
                     tank.SendMessage("SetInvincible", true);
                 }
+                // 胜利信号
+                gameController.SendMessage("SetVictory", gameObject.GetComponent<TankMovement>().playerID);
             }
         }
     }
 
-    void SetInvincible(bool flag)
+    public void SetInvincible(bool flag)
     {
         invincible = flag;
+    }
+
+    public void Respawn()
+    {
+        invincible = false;
+        isDead = false;
+        destroySmoke.Stop();
+        hp = hpTotal;
+        hpSlider.value = (float)hp / hpTotal;
     }
 }

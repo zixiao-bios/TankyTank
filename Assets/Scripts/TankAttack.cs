@@ -223,4 +223,11 @@ public class TankAttack : MonoBehaviour
     {
         isFrozen = flag;
     }
+
+    public void Respawn()
+    {
+        shell_time_remain = 0.0f;
+        missile_time_remain = 0.0f;
+        SetFreeze(false);
+    }
 }

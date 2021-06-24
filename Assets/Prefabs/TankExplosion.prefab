@@ -9833,7 +9833,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sputterDamge: 20
   sputterSpeed: 20
-  instanceIDs: 
 --- !u!135 &3141688055303814386
 SphereCollider:
   m_ObjectHideFlags: 0
