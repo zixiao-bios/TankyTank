@@ -19,10 +19,16 @@ public class TankMovement : MonoBehaviour
     private float noControlTimeTotal;
 
     // 坦克是否不受控制
-    private bool noControl =  false;
+    private bool noControl = false;
 
-    // 坦克不受控时的初速度
-    private Vector3 noControlSpeed;
+    // 导致坦克不受控的爆炸原点
+    private Vector3 groundZero;
+
+    // 不受控爆炸的作用力
+    private float explosionForce;
+
+    // 不受控爆炸的范围
+    private float explosionRadius;
 
     // 引擎声音
     private AudioSource idleAudio;
@@ -48,18 +54,22 @@ public class TankMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(noControl)
+        if (noControl)
         {
+            // 仅在开始时触发一次爆炸受力
+            if (noControlTime == noControlTimeTotal)
+            {
+                tankRigidbody.AddExplosionForce(explosionForce, groundZero, explosionRadius);
+            }
             noControlTime -= Time.deltaTime * 1000;
-            tankRigidbody.velocity = noControlSpeed * noControlTime / noControlTimeTotal;
-            if(noControlTime <= 0){
+            if (noControlTime <= 0) {
                 noControl = false;
             }
         }
     }
     void FixedUpdate()
     {
-        if(noControl)
+        if (noControl)
         {
             return;
         }
@@ -72,7 +82,7 @@ public class TankMovement : MonoBehaviour
             float h = Input.GetAxis("Player" + playerID + "Horizontal");
             tankRigidbody.angularVelocity = transform.up * h * angularSpeed;
 
-            if(v != 0 || h != 0)
+            if (v != 0 || h != 0)
             {
                 idleAudio.Stop();
                 if (!drivingAudio.isPlaying)
@@ -91,13 +101,22 @@ public class TankMovement : MonoBehaviour
         }
     }
 
-    void SetNoControlTime(Vector3[] arg){
-        noControlTimeTotal = arg[0][0];
+    public void SetNoControlTime(Vector3[] args) {
+        noControlTimeTotal = args[0][0];
         noControlTime = noControlTimeTotal;
-        noControlSpeed = arg[1];
-        if(noControlTime > 0){
+        explosionForce = args[0][1];
+        explosionRadius = args[0][2];
+        groundZero = args[1];
+        if (noControlTime > 0) {
             noControl = true;
         }
+    }
+
+    public void FreeConstrains()
+    {
+        // 解除轴向锁定
+        Rigidbody tankRigidbody = gameObject.GetComponent<Rigidbody>();
+        tankRigidbody.constraints = RigidbodyConstraints.None;
     }
 
     public void SetFreeze(bool flag)
@@ -110,6 +129,9 @@ public class TankMovement : MonoBehaviour
         gameObject.transform.position = initPosition;
         gameObject.transform.rotation = initRotation;
         gameObject.transform.localScale = initScale;
+        // 重新锁定刚体
+        Rigidbody tankRigidbody = gameObject.GetComponent<Rigidbody>();
+        tankRigidbody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         SetFreeze(false);
     }
 }

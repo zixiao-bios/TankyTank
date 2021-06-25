@@ -50,7 +50,7 @@ public class ActiveProps : MonoBehaviour
     }
 
     // 触发宝箱时回调此函数
-    public void PropCallBack(int propID)
+    public void GetProp(int propID)
     {
         switch (propID)
         {
@@ -62,5 +62,10 @@ public class ActiveProps : MonoBehaviour
                 curPropID = 0;
                 break;
         }
+    }
+
+    public void Respawn()
+    {
+        curPropID = 0;
     }
 }

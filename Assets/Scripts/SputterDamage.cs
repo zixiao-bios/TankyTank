@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SputterDamage : MonoBehaviour
 {
-    public int sputterDamge;
-    public int sputterSpeed;
+    public float sputterDamge;
+    public float sputterForce;
+    public float sputterRadius;
     public float sputterContinueTime;
 
     // 用于记录溅射有效时间
@@ -38,12 +39,14 @@ public class SputterDamage : MonoBehaviour
             coll.SendMessage("Damage", sputterDamge);
 
             // 炸飞坦克
-            Vector3 dir = coll.transform.position - this.transform.position;
-            Vector3[] arg = new Vector3[2];
-            arg[0][0] = 500;
-            arg[1] = dir * sputterSpeed;
-            coll.SendMessage("SetNoControlTime", arg);
-            coll.GetComponent<Rigidbody>().velocity = arg[1];
+            Vector3[] args = new Vector3[2];
+            args[0][0] = 500;
+            args[0][1] = sputterForce;
+            args[0][2] = sputterRadius;
+            args[1] = transform.position;
+            // 坦克存活时y轴被锁定，忽略y轴以免卸力
+            args[1][1] = coll.transform.position.y;
+            coll.SendMessage("SetNoControlTime", args);
         }
     }
 }

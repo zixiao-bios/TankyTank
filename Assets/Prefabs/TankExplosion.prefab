@@ -9831,8 +9831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239e59adef2888a499d74d6fc794c218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sputterDamge: 20
-  sputterSpeed: 20
+  sputterDamge: 15
+  sputterForce: 1000
+  sputterRadius: 3
   sputterContinueTime: 0.2
 --- !u!135 &3141688055303814386
 SphereCollider:

@@ -30,15 +30,7 @@ public class MissileExplosion : MonoBehaviour
         Explode();
         if(coll.gameObject.tag == "tank"){
             // 坦克减血
-            coll.gameObject.SendMessage("Damage", 50);
-
-            // 炸飞坦克
-            Vector3 dir = coll.transform.position - this.transform.position;
-            Vector3[] arg = new Vector3[2];
-            arg[0][0] = 500;
-            arg[1] = dir * 30;
-            coll.gameObject.SendMessage("SetNoControlTime", arg);
-            coll.gameObject.GetComponent<Rigidbody>().velocity = arg[1];
+            coll.gameObject.SendMessage("Damage", 30);
         }
     }
 

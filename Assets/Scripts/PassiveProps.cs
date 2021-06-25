@@ -144,4 +144,9 @@ public class PassiveProps : MonoBehaviour
                 break;
         }
     }
+
+    public void Respawn()
+    {
+        GetProp(0);
+    }
 }

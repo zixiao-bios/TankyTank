@@ -39,7 +39,7 @@ public class TankHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // 坦克被攻击
@@ -53,14 +53,15 @@ public class TankHealth : MonoBehaviour
 
             if (hp <= 0 && !isDead)
             {
-                Kill();
+                Kill(0);
             }
         }
     }
 
-    public void Kill()
+    public void Kill(float force)
     {
         // 坦克死亡
+        hpSlider.value = 0;
         isDead = true;
         GameObject tankExp = GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
         GameObject.Destroy(tankExp, 2f);
@@ -70,6 +71,8 @@ public class TankHealth : MonoBehaviour
         {
             tank.SendMessage("SetInvincible", true);
         }
+        // 解锁刚体坐标轴
+        gameObject.SendMessage("FreeConstrains");
         // 胜利信号
         Vector3[] args = new Vector3[2];
         args[0][0] = gameObject.GetComponent<TankMovement>().playerID;

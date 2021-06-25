@@ -9769,7 +9769,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sputterDamge: 10
-  sputterSpeed: 10
+  sputterForce: 500
+  sputterRadius: 1.5
   sputterContinueTime: 0.1
 --- !u!1 &199372
 GameObject:

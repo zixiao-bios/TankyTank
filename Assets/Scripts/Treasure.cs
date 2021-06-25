@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Treasure : MonoBehaviour
 {
+    public int propID;
+
+    public bool randomPick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +24,16 @@ public class Treasure : MonoBehaviour
     {
         if (other.tag == "tank")
         {
-            other.SendMessage("PropCallBack", Random.Range(-1, 0));
+            int targetID;
+            if (randomPick)
+            {
+                targetID = Random.Range(-1, 5);
+            }
+            else
+            {
+                targetID = propID;
+            }
+            other.SendMessage("GetProp", targetID);
             Destroy(gameObject);
         }
     }

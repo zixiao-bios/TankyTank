@@ -14870,6 +14870,7 @@ GameObject:
   - component: {fileID: 6988860458140096021}
   - component: {fileID: 687530012750320391}
   - component: {fileID: 3424575492910488733}
+  - component: {fileID: 74027897911889289}
   m_Layer: 0
   m_Name: Tank
   m_TagString: tank
@@ -14993,7 +14994,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.025
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -15089,7 +15090,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d7ca9fb5aa30155449192b23d7fb3336, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -15379,6 +15380,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activePropText: {fileID: 0}
   minePrefab: {fileID: 119916, guid: 3a73e26f88957b343af0490c9403c8f0, type: 3}
+--- !u!114 &74027897911889289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3265878021748189428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3352da1c3ba2b49863fa9d520003d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy_tank: {fileID: 0}
+  prop_time_tot: 10000
+  speed_up_speed: 16
+  slow_down_speed: 4
 --- !u!1 &5290342190677094288
 GameObject:
   m_ObjectHideFlags: 0

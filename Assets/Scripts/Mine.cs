@@ -30,8 +30,7 @@ public class Mine : MonoBehaviour
             if (playerID != ownerID)
             {
                 // º¥À¿
-                other.GetComponent<TankHealth>().Kill();
-                Destroy(gameObject);
+                other.SendMessage("Kill", 1000);
             }
         }
     }

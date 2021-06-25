@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0bcad5208ae124a967301d5dfcf7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  propID: 0
+  randomPick: 1
 --- !u!1 &196250
 GameObject:
   m_ObjectHideFlags: 0

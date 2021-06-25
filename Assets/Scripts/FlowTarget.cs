@@ -19,7 +19,10 @@ public class FlowTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = (player1.position + player2.position) / 2 + offset;
+        Vector3 newPosition = (player1.position + player2.position) / 2 + offset;
+        // y不发生改变
+        newPosition.y = offset.y;
+        transform.position = newPosition;
         float distance = Vector3.Distance(player1.position,player2.position);
         float size = distance*0.55f;
         if(size <= 10)
