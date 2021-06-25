@@ -52,22 +52,22 @@ public class PassiveProps : MonoBehaviour
     void Update()
     {
         // -----------------------用按键激发道具，用于测试------------------------
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            get_prop("speed_up");
-        }
-        else if (Input.GetKey(KeyCode.Alpha3))
-        {
-            get_prop("enemy_slow_down");
-        }
-        else if (Input.GetKey(KeyCode.Alpha4))
-        {
-            get_prop("no_cooling_time");
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            get_prop("shield");
-        }
+        // if (Input.GetKey(KeyCode.Alpha2))
+        // {
+        //     GetProp(1);
+        // }
+        // else if (Input.GetKey(KeyCode.Alpha3))
+        // {
+        //     GetProp(2);
+        // }
+        // else if (Input.GetKey(KeyCode.Alpha4))
+        // {
+        //     GetProp(3);
+        // }
+        // else if (Input.GetKey(KeyCode.Alpha5))
+        // {
+        //     GetProp(4);
+        // }
         // ---------------------------------------------------------------------
 
 
@@ -79,7 +79,7 @@ public class PassiveProps : MonoBehaviour
         if (prop_time_left <= 0)
         {
             // 有道具，且时间到了，取消道具效果
-            cancel_prop_effect(prop_id);
+            CancelPropEffect(prop_id);
             prop_id = 0;
         }
         else
@@ -90,14 +90,14 @@ public class PassiveProps : MonoBehaviour
     }
 
     // 接收道具，由SendMessage调用
-    void get_prop(string prop_name){
-        prop_id = prop_map[prop_name];
+    void GetProp(int id){
+        prop_id = id;
         prop_time_left = prop_time_tot;
-        set_prop_effect(prop_id);
+        SetPropEffect(prop_id);
     }
 
     // 设置指定id的道具效果
-    void set_prop_effect(int id){
+    void SetPropEffect(int id){
         switch (id)
         {
             case 1:
@@ -118,7 +118,7 @@ public class PassiveProps : MonoBehaviour
     }
 
     // 取消指定id的道具效果
-    void cancel_prop_effect(int id){
+    void CancelPropEffect(int id){
         switch (id)
         {
             case 1:
@@ -139,11 +139,5 @@ public class PassiveProps : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    // 触发宝箱时回调此函数
-    public void PropCallBack(int propID)
-    {
-        // 注意处理ID不存在的情况（例如传入的是主动技能ID，则不进行任何操作）
     }
 }
