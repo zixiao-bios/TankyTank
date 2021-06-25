@@ -14869,6 +14869,7 @@ GameObject:
   - component: {fileID: 6573571741083312113}
   - component: {fileID: 6988860458140096021}
   - component: {fileID: 687530012750320391}
+  - component: {fileID: 3424575492910488733}
   m_Layer: 0
   m_Name: Tank
   m_TagString: tank
@@ -14978,6 +14979,7 @@ MonoBehaviour:
   tankExplosion: {fileID: 151086, guid: ee49a9a8678ecf8468eb488e1ac8d42b, type: 3}
   hpSlider: {fileID: 0}
   destroySmoke: {fileID: 1498212544307434732}
+  gameController: {fileID: 0}
   invincible: 0
 --- !u!82 &4251246587706702420
 AudioSource:
@@ -15363,6 +15365,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3424575492910488733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3265878021748189428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc387178d0fa204d88e36928021fe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activePropText: {fileID: 0}
+  minePrefab: {fileID: 119916, guid: 3a73e26f88957b343af0490c9403c8f0, type: 3}
 --- !u!1 &5290342190677094288
 GameObject:
   m_ObjectHideFlags: 0

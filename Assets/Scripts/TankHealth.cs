@@ -53,20 +53,28 @@ public class TankHealth : MonoBehaviour
 
             if (hp <= 0 && !isDead)
             {
-                // 坦克死亡
-                isDead = true;
-                GameObject tankExp = GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
-                GameObject.Destroy(tankExp, 0.5f);
-                gameObject.SendMessage("SetFreeze", true);
-                destroySmoke.Play();
-                foreach(GameObject tank in GameObject.FindGameObjectsWithTag("tank"))
-                {
-                    tank.SendMessage("SetInvincible", true);
-                }
-                // 胜利信号
-                gameController.SendMessage("SetVictory", gameObject.GetComponent<TankMovement>().playerID);
+                Kill();
             }
         }
+    }
+
+    public void Kill()
+    {
+        // 坦克死亡
+        isDead = true;
+        GameObject tankExp = GameObject.Instantiate(tankExplosion, transform.position + Vector3.up, transform.rotation);
+        GameObject.Destroy(tankExp, 2f);
+        gameObject.SendMessage("SetFreeze", true);
+        destroySmoke.Play();
+        foreach (GameObject tank in GameObject.FindGameObjectsWithTag("tank"))
+        {
+            tank.SendMessage("SetInvincible", true);
+        }
+        // 胜利信号
+        Vector3[] args = new Vector3[2];
+        args[0][0] = gameObject.GetComponent<TankMovement>().playerID;
+        args[1] = gameObject.transform.position;
+        gameController.SendMessage("SetVictory", args);
     }
 
     public void SetInvincible(bool flag)

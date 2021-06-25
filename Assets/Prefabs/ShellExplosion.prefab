@@ -9770,6 +9770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sputterDamge: 10
   sputterSpeed: 10
+  sputterContinueTime: 0.1
 --- !u!1 &199372
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ public class SputterDamage : MonoBehaviour
 {
     public int sputterDamge;
     public int sputterSpeed;
+    public float sputterContinueTime;
+
+    // 用于记录溅射有效时间
+    private float timer;
 
     // 用于记录被溅射到的实例ID，避免多次伤害
     private List<int> instanceIDs = new List<int>();
@@ -13,18 +17,21 @@ public class SputterDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = sputterContinueTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
     public void OnTriggerEnter(Collider coll)
     {
-        if (coll.tag == "tank" && !instanceIDs.Contains(coll.GetInstanceID()))
+        if (timer > 0 && coll.tag == "tank" && !instanceIDs.Contains(coll.GetInstanceID()))
         {
             instanceIDs.Add(coll.GetInstanceID());
             // 坦克减血

@@ -45,7 +45,7 @@ public class MissileExplosion : MonoBehaviour
     // 导弹爆炸
     void Explode(){
         GameObject exp = GameObject.Instantiate(explosion_effect, this.transform.position, this.transform.rotation);
-        GameObject.Destroy(exp, 0.5f);
+        GameObject.Destroy(exp, 2f);
         GameObject.Destroy(this.gameObject);
     }
 }

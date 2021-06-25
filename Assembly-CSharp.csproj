@@ -60,12 +60,15 @@
     <Compile Include="Assets\Scripts\MissileControl.cs" />
     <Compile Include="Assets\Scripts\FlowTarget.cs" />
     <Compile Include="Assets\Scripts\MissileExplosion.cs" />
-    <Compile Include="Assets\TankPorps.cs" />
+    <Compile Include="Assets\Scripts\Victory.cs" />
+    <Compile Include="Assets\Scripts\PassiveProps.cs" />
     <Compile Include="Assets\Scripts\Shell.cs" />
     <Compile Include="Assets\Scripts\TankMovement.cs" />
     <Compile Include="Assets\Scripts\TankHealth.cs" />
     <Compile Include="Assets\Scripts\SputterDamage.cs" />
-    <Compile Include="Assets\Scripts\Victory.cs" />
+    <Compile Include="Assets\Scripts\ActiveProps.cs" />
+    <Compile Include="Assets\Scripts\Mine.cs" />
+    <Compile Include="Assets\Scripts\Treasure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Bowlby_One\OFL.txt" />
