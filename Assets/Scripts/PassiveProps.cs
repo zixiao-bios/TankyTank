@@ -91,8 +91,12 @@ public class PassiveProps : MonoBehaviour
 
     // 接收道具，由SendMessage调用
     void GetProp(int id){
-        prop_id = id;
+        // 取消现有道具效果
+        CancelPropEffect(prop_id);
+
+        // 设置新的道具
         prop_time_left = prop_time_tot;
+        prop_id = id;
         SetPropEffect(prop_id);
     }
 
