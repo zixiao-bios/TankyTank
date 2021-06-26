@@ -57,6 +57,14 @@ public class PassiveProps : MonoBehaviour
         lastRotation = passivePropIcon.transform.rotation.eulerAngles;
     }
 
+    private void FixedUpdate()
+    {
+        // 技能图标旋转
+        Vector3 curRotation = lastRotation + new Vector3(0.0f, 5f, 0.0f);
+        passivePropIcon.transform.rotation = Quaternion.Euler(curRotation);
+        lastRotation = curRotation;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -79,11 +87,6 @@ public class PassiveProps : MonoBehaviour
         // }
         // ---------------------------------------------------------------------
 
-        // 技能图标旋转
-        Vector3 curRotation = lastRotation + new Vector3(0.0f, 0.5f, 0.0f);
-        passivePropIcon.transform.rotation = Quaternion.Euler(curRotation);
-        lastRotation = curRotation;
-
         // 无道具直接返回
         if (prop_id == 0){
             return;
@@ -92,8 +95,7 @@ public class PassiveProps : MonoBehaviour
         if (prop_time_left <= 0)
         {
             // 有道具，且时间到了，取消道具效果
-            CancelPropEffect(prop_id);
-            prop_id = 0;
+            GetProp(0);
         }
         else
         {

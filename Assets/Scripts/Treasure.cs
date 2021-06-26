@@ -23,7 +23,7 @@ public class Treasure : MonoBehaviour
     {
         if (randomPick)
         {
-            propID = Random.Range(-1, 5);
+            propID = Random.Range(-2, 5);
             icon.sprite = randomSprite;
         }
         else

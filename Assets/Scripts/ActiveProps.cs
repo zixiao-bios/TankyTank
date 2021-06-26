@@ -61,7 +61,7 @@ public class ActiveProps : MonoBehaviour
                     default:
                         break;
                 }
-                curPropID = 0;
+                GetProp(0);
             }
         }
     }
@@ -91,7 +91,7 @@ public class ActiveProps : MonoBehaviour
             case -2:
                 return exchangeSprite;
             default:
-                return null;
+                return UIDefault;
         }
     }
 }

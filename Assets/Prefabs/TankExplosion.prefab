@@ -9833,7 +9833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sputterDamge: 15
   sputterForce: 1500
-  sputterRadius: 3
+  sputterForceRadius: 3
   sputterContinueTime: 0.2
 --- !u!135 &3141688055303814386
 SphereCollider:
@@ -9846,7 +9846,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &182560
 GameObject:

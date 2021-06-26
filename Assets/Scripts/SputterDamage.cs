@@ -6,7 +6,7 @@ public class SputterDamage : MonoBehaviour
 {
     public float sputterDamge;
     public float sputterForce;
-    public float sputterRadius;
+    public float sputterForceRadius;
     public float sputterContinueTime;
 
     // 用于记录溅射有效时间
@@ -42,7 +42,7 @@ public class SputterDamage : MonoBehaviour
             Vector3[] args = new Vector3[3];
             args[0][0] = 500;
             args[0][1] = sputterForce;
-            args[0][2] = sputterRadius;
+            args[0][2] = sputterForceRadius;
             // 力矩
             args[1] = new Vector3(Random.value, Random.value, Random.value).normalized * sputterForce;
             // 原爆点
