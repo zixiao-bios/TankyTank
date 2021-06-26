@@ -1,19 +1,19 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: E:/OneDrive/Code/TankyTank/Packages/manifest.json
+    m_FilePath: A:/UnityProject/Tanks/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637599302508239283
-    m_Hash: 3758519481
+      ticks: 637600152142898264
+    m_Hash: 2640579569
   m_LockFileStatus:
-    m_FilePath: E:/OneDrive/Code/TankyTank/Packages/packages-lock.json
+    m_FilePath: A:/UnityProject/Tanks/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637599302513124882
+      ticks: 637603115125208235
     m_Hash: 3640143752
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -76,7 +76,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.5.7
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.collab-proxy@1.5.7
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.collab-proxy@1.5.7
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -180,7 +180,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -287,7 +287,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.8
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.ide.visualstudio@2.0.8
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -372,7 +372,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.3
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.ide.vscode@1.2.3
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.ide.vscode@1.2.3
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -441,7 +441,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.1.24
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.test-framework@1.1.24
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.test-framework@1.1.24
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -534,7 +534,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.6
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.textmeshpro@3.0.6
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.textmeshpro@3.0.6
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -693,7 +693,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.8
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.timeline@1.4.8
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.timeline@1.4.8
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -2646,7 +2646,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.6
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.ext.nunit@1.0.6
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.ext.nunit@1.0.6
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -2707,7 +2707,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 2.0.0
       source: 1
-      resolvedPath: E:\OneDrive\Code\TankyTank\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
+      resolvedPath: A:\UnityProject\Tanks\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
       assetPath: Packages/com.unity.nuget.newtonsoft-json
       name: com.unity.nuget.newtonsoft-json
       displayName: Newtonsoft Json
@@ -2778,5 +2778,5 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: E:/OneDrive/Code/TankyTank/Packages
+m_ProjectPath: A:/UnityProject/Tanks/Packages
 m_EditorVersion: 2020.3.0f1c1 (1e553bf703d9)

@@ -90,9 +90,8 @@ public class TankAttack : MonoBehaviour
                 missile_key = KeyCode.Alpha1;
                 break;
             case 2:
-                shell_key[0] = KeyCode.KeypadEnter;
-                shell_key[1] = KeyCode.Return;
-                missile_key = KeyCode.Keypad1;
+                shell_key[0] = KeyCode.RightControl;
+                missile_key = KeyCode.Return;
                 break;
         }
     }

@@ -13,6 +13,9 @@ public class PassiveProps : MonoBehaviour
 
     public GameObject enemy_tank;
 
+    public Color myColor;
+    public Color enemyColor;
+
     // 计时道具的持续时间（ms）
     public double prop_time_tot;
 
@@ -125,20 +128,25 @@ public class PassiveProps : MonoBehaviour
         {
             case 1:
                 GetComponent<TankMovement>().speed = speed_up_speed;
+                passivePropIcon.GetComponent<SpriteRenderer>().color = myColor;
                 break;
             case 2:
                 enemy_tank.GetComponent<TankMovement>().speed = slow_down_speed;
+                passivePropIcon.GetComponent<SpriteRenderer>().color = enemyColor;
                 break;
             case 3:
                 GetComponent<TankAttack>().shell_ready_time_tot = 0;
+                passivePropIcon.GetComponent<SpriteRenderer>().color = myColor;
                 break;
             case 4:
                 GetComponent<TankHealth>().invincible = true;
+                passivePropIcon.GetComponent<SpriteRenderer>().color = myColor;
                 break;
             default:
                 break;
         }
         passivePropIcon.GetComponent<SpriteRenderer>().sprite = GetSprite(id);
+        print(id);
     }
 
     // 取消指定id的道具效果

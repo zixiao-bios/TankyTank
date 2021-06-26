@@ -68,7 +68,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1578}
     - Class: 114
       Script: {instanceID: 1758}
     - Class: 114
@@ -125,6 +125,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 205
       Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -140,16 +142,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 5ab533713adae59372fb3e10a585c186
-    assemblyName: Unity.Timeline.dll
-    namespaceName: UnityEngine.Timeline
-    className: AnimationPlayableAsset
-  - hash:
-      serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 5ab533713adae59372fb3e10a585c186
+    assemblyName: Unity.Timeline.dll
+    namespaceName: UnityEngine.Timeline
+    className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -248,7 +250,7 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: 724fecc9c93529d277832791eb15b366
+      Hash: b28b6447e7eb7edca3a82cb41dcc8c1c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Treasure
@@ -392,7 +394,7 @@ ScriptsOnlyBuild:
     className: MissileExplosion
   - hash:
       serializedVersion: 2
-      Hash: 49c129ddf5791146a520af0fd89245cd
+      Hash: 15ab4dd316f0a50acf03c5e2ea4088f2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Victory
@@ -470,7 +472,7 @@ ScriptsOnlyBuild:
     className: ScreenSpaceAmbientObscurance
   - hash:
       serializedVersion: 2
-      Hash: e812589e185de548630b0b3fae1edd1f
+      Hash: 7473593a1ba473fe6a67762305c287b9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PassiveProps
@@ -680,7 +682,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 05e8b50a7366b20859b7c7e8265092df
+      Hash: fd70b6c54414ce53bfaec93d61e9e015
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TankHealth
@@ -764,7 +766,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 1782e5b8be2940427e83202310f90c9f
+      Hash: 54be434c3c98b72bc885e92188eb3bfe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SputterDamage
@@ -782,7 +784,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 55201006705e3314a0f1e29631d627bb
+      Hash: 1e4900de4568e17cb2388aaa2b6b4817
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ActiveProps
@@ -855,4 +857,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "E:/OneDrive/\u684C\u9762/New Unity Project (1).exe"
+  playerPath: A:/release/New Unity Project (1).exe

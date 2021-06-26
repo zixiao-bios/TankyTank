@@ -29,7 +29,7 @@ public class ActiveProps : MonoBehaviour
     void Start()
     {
         keyDict[1] = KeyCode.LeftControl;
-        keyDict[2] = KeyCode.RightArrow;
+        keyDict[2] = KeyCode.RightShift;
 
         playerID = gameObject.GetComponent<TankMovement>().playerID;
 
@@ -39,7 +39,7 @@ public class ActiveProps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ÓÐÐ§µÄÖ÷¶¯¼¼ÄÜIDÐ¡ÓÚ0
+        // ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÐ¡ï¿½ï¿½0
         if (curPropID < 0)
         {
             if(Input.GetKeyDown(propKey))
@@ -66,10 +66,10 @@ public class ActiveProps : MonoBehaviour
         }
     }
 
-    // ´¥·¢±¦ÏäÊ±»Øµ÷´Ëº¯Êý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Øµï¿½ï¿½Ëºï¿½ï¿½ï¿½
     public void GetProp(int propID)
     {
-        // Ö÷¶¯¼¼ÄÜIDÐ¡ÓÚµÈÓÚ0
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÐ¡ï¿½Úµï¿½ï¿½ï¿½0
         if (propID <= 0)
         {
             curPropID = propID;
