@@ -857,4 +857,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: A:/release/New Unity Project (1).exe
+  playerPath: C:/Users/zixia/Desktop/TankyTank/New Unity Project (1).exe
