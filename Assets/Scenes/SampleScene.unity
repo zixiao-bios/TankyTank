@@ -2621,6 +2621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryText: {fileID: 567828576}
+  versusText: {fileID: 2004568356}
   gameSetTimeGap: 5
   respawnList:
   - {fileID: 1871481711}
@@ -3933,7 +3934,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 160, y: 80}
+  m_SizeDelta: {x: 282.3461, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004568355
 MonoBehaviour:
@@ -3983,7 +3984,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VS
+  m_Text: <color=#F50000>0</color> <color=#FFB900>VS</color> <color=#00F500>0</color>
 --- !u!222 &2004568357
 CanvasRenderer:
   m_ObjectHideFlags: 0

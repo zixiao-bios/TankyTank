@@ -7,6 +7,8 @@ public class Victory : MonoBehaviour
 {
     public Text victoryText;
 
+    public Text versusText;
+
     public float gameSetTimeGap;
 
     public List<GameObject> respawnList = new List<GameObject>();
@@ -58,6 +60,12 @@ public class Victory : MonoBehaviour
                 gameSet = false;
             }
         }
+
+        // 退出游戏
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void SetVictory(Vector3[] args)
@@ -67,6 +75,7 @@ public class Victory : MonoBehaviour
         int winnerID = loserID == 1 ? 2 : 1;
         victoryCounter[winnerID]++;
         victoryText.text = string.Format("<size=120><color=#{0}>胜利</color></size>\n<size=30><color=#white>当前比分：</color><color=#F50000>{1}</color> <color=#white>-</color> <color=#00F500>{2}</color></size>", victoryColor[winnerID], victoryCounter[1], victoryCounter[2]);
+        versusText.text = string.Format("<color=#F50000>{0}</color> <color=#FFB900>VS</color> <color=#00F500>{1}</color>", victoryCounter[1], victoryCounter[2]);
         timeCounter = gameSetTimeGap;
         gameSet = true;
     }
