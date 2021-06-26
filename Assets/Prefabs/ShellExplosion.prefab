@@ -9769,7 +9769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sputterDamge: 10
-  sputterForce: 500
+  sputterForce: 750
   sputterRadius: 1.5
   sputterContinueTime: 0.1
 --- !u!1 &199372

@@ -31,6 +31,7 @@ public class Mine : MonoBehaviour
             {
                 // º¥À¿
                 other.SendMessage("Kill", 1000);
+                Destroy(gameObject);
             }
         }
     }

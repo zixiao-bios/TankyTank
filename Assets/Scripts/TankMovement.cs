@@ -26,6 +26,7 @@ public class TankMovement : MonoBehaviour
 
     // 不受控爆炸的作用力
     private float explosionForce;
+    private Vector3 explosionTorque;
 
     // 不受控爆炸的范围
     private float explosionRadius;
@@ -59,7 +60,18 @@ public class TankMovement : MonoBehaviour
             // 仅在开始时触发一次爆炸受力
             if (noControlTime == noControlTimeTotal)
             {
+                // 坦克存活时y轴被锁定，将原爆点设置为与坦克水平，以免y轴卸力
+                if (!gameObject.GetComponent<TankHealth>().isDead)
+                {
+                    groundZero.y = gameObject.transform.position.y;
+                }
+                // 死亡后适当降低y轴，实现坦克被炸飞的效果
+                else
+                {
+                    groundZero.y = -explosionRadius / 2f;
+                }
                 tankRigidbody.AddExplosionForce(explosionForce, groundZero, explosionRadius);
+                tankRigidbody.AddTorque(explosionTorque);
             }
             noControlTime -= Time.deltaTime * 1000;
             if (noControlTime <= 0) {
@@ -106,7 +118,8 @@ public class TankMovement : MonoBehaviour
         noControlTime = noControlTimeTotal;
         explosionForce = args[0][1];
         explosionRadius = args[0][2];
-        groundZero = args[1];
+        explosionTorque = args[1];
+        groundZero = args[2];
         if (noControlTime > 0) {
             noControl = true;
         }

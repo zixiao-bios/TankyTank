@@ -23,7 +23,8 @@ public class TankHealth : MonoBehaviour
     // 坦克现在血量
     private int hp;
 
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead = false;
 
     // 坦克无敌
     [HideInInspector]

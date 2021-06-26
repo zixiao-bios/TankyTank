@@ -39,13 +39,14 @@ public class SputterDamage : MonoBehaviour
             coll.SendMessage("Damage", sputterDamge);
 
             // 炸飞坦克
-            Vector3[] args = new Vector3[2];
+            Vector3[] args = new Vector3[3];
             args[0][0] = 500;
             args[0][1] = sputterForce;
             args[0][2] = sputterRadius;
-            args[1] = transform.position;
-            // 坦克存活时y轴被锁定，忽略y轴以免卸力
-            args[1][1] = coll.transform.position.y;
+            // 力矩
+            args[1] = new Vector3(Random.value, Random.value, Random.value).normalized * sputterForce;
+            // 原爆点
+            args[2] = transform.position;
             coll.SendMessage("SetNoControlTime", args);
         }
     }

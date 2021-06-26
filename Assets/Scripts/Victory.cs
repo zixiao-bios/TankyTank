@@ -22,7 +22,7 @@ public class Victory : MonoBehaviour
 
     private bool gameSet = false;
 
-    private Vector3 loserPosition;
+    private List<Vector3> loserPositions = new List<Vector3>();
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +50,12 @@ public class Victory : MonoBehaviour
                 {
                     respawnObj.SendMessage("Respawn");
                 }
-                gameSet = false;
                 // 落地成盒
-                GameObject.Instantiate(treasurePrefab, loserPosition, Quaternion.identity);
+                foreach(Vector3 pos in loserPositions)
+                {
+                    GameObject.Instantiate(treasurePrefab, pos, Quaternion.identity);
+                }
+                gameSet = false;
             }
         }
     }
@@ -60,7 +63,7 @@ public class Victory : MonoBehaviour
     public void SetVictory(Vector3[] args)
     {
         int loserID = (int)args[0][0];
-        loserPosition = args[1];
+        loserPositions.Add(args[1]);
         int winnerID = loserID == 1 ? 2 : 1;
         victoryCounter[winnerID]++;
         victoryText.text = string.Format("<size=120><color=#{0}>胜利</color></size>\n<size=30><color=#white>当前比分：</color><color=#F50000>{1}</color> <color=#white>-</color> <color=#00F500>{2}</color></size>", victoryColor[winnerID], victoryCounter[1], victoryCounter[2]);

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PassiveProps : MonoBehaviour
 {
-    private int tank_id;
+    public Sprite speedUpSprite;
+    public Sprite slowDownSprite;
+    public Sprite noCDSprite;
+    public Sprite shieldSprite;
+
+    public GameObject passivePropIcon;
 
     public GameObject enemy_tank;
 
@@ -32,10 +37,12 @@ public class PassiveProps : MonoBehaviour
     // 道具种类
     private Dictionary<string,int> prop_map;
 
+    // 记录上帧技能图标旋转值
+    private Vector3 lastRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-        tank_id = GetInstanceID();
         original_tank_speed = GetComponent<TankMovement>().speed;
         original_shell_cooling_time = GetComponent<TankAttack>().shell_ready_time_tot;
 
@@ -46,6 +53,8 @@ public class PassiveProps : MonoBehaviour
         prop_map["enemy_slow_down"] = 2;
         prop_map["no_cooling_time"] = 3;
         prop_map["shield"] = 4;
+
+        lastRotation = passivePropIcon.transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -70,9 +79,13 @@ public class PassiveProps : MonoBehaviour
         // }
         // ---------------------------------------------------------------------
 
+        // 技能图标旋转
+        Vector3 curRotation = lastRotation + new Vector3(0.0f, 0.5f, 0.0f);
+        passivePropIcon.transform.rotation = Quaternion.Euler(curRotation);
+        lastRotation = curRotation;
 
         // 无道具直接返回
-        if(prop_id == 0){
+        if (prop_id == 0){
             return;
         }
         
@@ -91,13 +104,17 @@ public class PassiveProps : MonoBehaviour
 
     // 接收道具，由SendMessage调用
     void GetProp(int id){
-        // 取消现有道具效果
-        CancelPropEffect(prop_id);
+        // 被动ID大于等于0
+        if (id >= 0)
+        {
+            // 取消现有道具效果
+            CancelPropEffect(prop_id);
 
-        // 设置新的道具
-        prop_time_left = prop_time_tot;
-        prop_id = id;
-        SetPropEffect(prop_id);
+            // 设置新的道具
+            prop_time_left = prop_time_tot;
+            prop_id = id;
+            SetPropEffect(prop_id);
+        }
     }
 
     // 设置指定id的道具效果
@@ -119,6 +136,7 @@ public class PassiveProps : MonoBehaviour
             default:
                 break;
         }
+        passivePropIcon.GetComponent<SpriteRenderer>().sprite = GetSprite(id);
     }
 
     // 取消指定id的道具效果
@@ -148,5 +166,22 @@ public class PassiveProps : MonoBehaviour
     public void Respawn()
     {
         GetProp(0);
+    }
+
+    Sprite GetSprite(int propID)
+    {
+        switch (propID)
+        {
+            case 1:
+                return speedUpSprite;
+            case 2:
+                return slowDownSprite;
+            case 3:
+                return noCDSprite;
+            case 4:
+                return shieldSprite;
+            default:
+                return null;
+        }
     }
 }

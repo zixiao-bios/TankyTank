@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class ActiveProps : MonoBehaviour
 {
-    public Text activePropText;
+    public Sprite mineSprite;
+    public Sprite exchangeSprite;
+    public Sprite UIDefault;
+
+    public GameObject activePropIcon;
 
     public GameObject minePrefab;
+
+    public GameObject enemyTank;
 
     private Dictionary<int, KeyCode> keyDict = new Dictionary<int, KeyCode>();
 
@@ -33,7 +39,8 @@ public class ActiveProps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (curPropID != 0)
+        // 有效的主动技能ID小于0
+        if (curPropID < 0)
         {
             if(Input.GetKeyDown(propKey))
             {
@@ -42,6 +49,16 @@ public class ActiveProps : MonoBehaviour
                     case -1:
                         GameObject mine = GameObject.Instantiate(minePrefab, transform.position, transform.rotation);
                         mine.SendMessage("SetOwner", playerID);
+                        break; 
+                    case -2:
+                        Vector3 positionTmp = gameObject.transform.position;
+                        Quaternion rotationTmp = gameObject.transform.rotation;
+                        gameObject.transform.position = enemyTank.transform.position;
+                        gameObject.transform.rotation = enemyTank.transform.rotation;
+                        enemyTank.transform.position = positionTmp;
+                        enemyTank.transform.rotation = rotationTmp;
+                        break;
+                    default:
                         break;
                 }
                 curPropID = 0;
@@ -52,20 +69,29 @@ public class ActiveProps : MonoBehaviour
     // 触发宝箱时回调此函数
     public void GetProp(int propID)
     {
-        switch (propID)
+        // 主动技能ID小于等于0
+        if (propID <= 0)
         {
-            case -1:
-                activePropText.text = "地雷";
-                curPropID = propID;
-                break;
-            default:
-                curPropID = 0;
-                break;
+            curPropID = propID;
+            activePropIcon.GetComponent<Image>().sprite = GetSprite(propID);
         }
     }
 
     public void Respawn()
     {
-        curPropID = 0;
+        GetProp(0);
+    }
+
+    Sprite GetSprite(int propID)
+    {
+        switch (propID)
+        {
+            case -1:
+                return mineSprite;
+            case -2:
+                return exchangeSprite;
+            default:
+                return null;
+        }
     }
 }
