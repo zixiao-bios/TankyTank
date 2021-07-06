@@ -74,7 +74,8 @@ public class Victory : MonoBehaviour
         loserPositions.Add(args[1]);
         int winnerID = loserID == 1 ? 2 : 1;
         victoryCounter[winnerID]++;
-        victoryText.text = string.Format("<size=120><color=#{0}>胜利</color></size>\n<size=30><color=#white>当前比分：</color><color=#F50000>{1}</color> <color=#white>-</color> <color=#00F500>{2}</color></size>", victoryColor[winnerID], victoryCounter[1], victoryCounter[2]);
+        victoryText.text = string.Format("<size=120><color=#{0}>胜利</color></size>\n<size=30><color=#white>" +
+            "当前比分：</color><color=#F50000>{1}</color> <color=#white>-</color> <color=#00F500>{2}</color></size>", victoryColor[winnerID], victoryCounter[1], victoryCounter[2]);
         versusText.text = string.Format("<color=#F50000>{0}</color> <color=#FFB900>VS</color> <color=#00F500>{1}</color>", victoryCounter[1], victoryCounter[2]);
         timeCounter = gameSetTimeGap;
         gameSet = true;

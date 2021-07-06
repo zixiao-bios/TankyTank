@@ -39,7 +39,7 @@ public class ActiveProps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ��Ч����������IDС��0
+        // ID小于0说明存在主动道具
         if (curPropID < 0)
         {
             if(Input.GetKeyDown(propKey))
@@ -66,10 +66,10 @@ public class ActiveProps : MonoBehaviour
         }
     }
 
-    // ��������ʱ�ص��˺���
+    // 接收道具，由SendMessage调用
     public void GetProp(int propID)
     {
-        // ��������IDС�ڵ���0
+        // 主动ID小于等于0
         if (propID <= 0)
         {
             curPropID = propID;
